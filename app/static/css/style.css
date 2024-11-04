@@ -1,0 +1,53 @@
+﻿/* Previous CSS rules remain the same */
+
+/* Language-specific display rules */
+[data-language="ja"] .lang-en,
+[data-language="ja"] .lang-mn,
+[data-language="ja"] .lang-vi {
+    display: none;
+}
+
+[data-language="en"] .lang-ja,
+[data-language="en"] .lang-mn,
+[data-language="en"] .lang-vi {
+    display: none;
+}
+
+[data-language="mn"] .lang-ja,
+[data-language="mn"] .lang-en,
+[data-language="mn"] .lang-vi {
+    display: none;
+}
+
+[data-language="vi"] .lang-ja,
+[data-language="vi"] .lang-en,
+[data-language="vi"] .lang-mn {
+    display: none;
+}
+
+/* Language selector styles */
+.language-selector {
+    margin-bottom: 2rem;
+}
+
+.language-selector a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.language-selector a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.language-selector a.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}

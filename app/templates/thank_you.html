@@ -1,0 +1,26 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<div class="thank-you-container">
+    <h1>
+        <span class="lang-ja">ご応募ありがとうございました</span>
+        <span class="lang-en">Thank you for your application</span>
+        <span class="lang-mn">Таны өргөдлийг хүлээн авлаа</span>
+        <span class="lang-vi">Cảm ơn bạn đã nộp đơn</span>
+    </h1>
+    
+    <p>
+        <span class="lang-ja">内容を確認の上、ご連絡させていただきます。</span>
+        <span class="lang-en">We will review your application and contact you soon.</span>
+        <span class="lang-mn">Таны өргөдлийг хянаж үзээд тантай холбогдох болно.</span>
+        <span class="lang-vi">Chúng tôi sẽ xem xét đơn của bạn và liên hệ sớm.</span>
+    </p>
+    
+    <a href="{{ url_for('index') }}" class="btn btn-primary">
+        <span class="lang-ja">トップページに戻る</span>
+        <span class="lang-en">Return to Home</span>
+        <span class="lang-mn">Нүүр хуудас руу буцах</span>
+        <span class="lang-vi">Quay về trang chủ</span>
+    </a>
+</div>
+{% endblock %}

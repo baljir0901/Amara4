@@ -1,0 +1,43 @@
+﻿# Japanese translations
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Submit"
+msgstr "応募する"
+
+msgid "Basic Information"
+msgstr "基本情報"
+
+msgid "Contact Information"
+msgstr "連絡先"
+
+msgid "Emergency Contacts"
+msgstr "緊急連絡先"
+
+msgid "Education"
+msgstr "学歴"
+
+msgid "Work Experience"
+msgstr "職歴"
+
+msgid "Licenses & Skills"
+msgstr "免許・資格"
+
+msgid "Health Information"
+msgstr "健康状態"
+
+msgid "Additional Information"
+msgstr "その他"
+
+msgid "Document Upload"
+msgstr "書類アップロード"
