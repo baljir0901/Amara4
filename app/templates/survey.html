@@ -1,241 +1,35 @@
 ﻿{% extends "base.html" %}
 
 {% block content %}
-<div class="form-container">
-    <form method="POST" enctype="multipart/form-data" class="survey-form" data-language="{{ session.get('language', 'ja') }}">
-        {{ form.csrf_token }}
-
-        <!-- Previous sections (Personal Info & Contact) remain the same -->
-
-        <!-- Education Section -->
-        <section class="form-section" id="education">
-            <h2 class="section-title">
-                <span class="lang-ja">学歴</span>
-                <span class="lang-en">Education</span>
-                <span class="lang-mn">Боловсрол</span>
-                <span class="lang-vi">Học vấn</span>
-            </h2>
+<div class="survey-container">
+    <h1>応募フォーム / Application Form</h1>
+    
+    <form method="POST" action="{{ url_for('submit') }}" enctype="multipart/form-data" class="survey-form">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-section">
+            <h2>個人情報 / Personal Information</h2>
             
             <div class="form-group">
-                <table class="education-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <span class="lang-ja">入学年月</span>
-                                <span class="lang-en">Enrollment Date</span>
-                                <span class="lang-mn">Элссэн огноо</span>
-                                <span class="lang-vi">Ngày nhập học</span>
-                            </th>
-                            <th>
-                                <span class="lang-ja">卒業年月</span>
-                                <span class="lang-en">Graduation Date</span>
-                                <span class="lang-mn">Төгссөн огноо</span>
-                                <span class="lang-vi">Ngày tốt nghiệp</span>
-                            </th>
-                            <th>
-                                <span class="lang-ja">学校名</span>
-                                <span class="lang-en">School Name</span>
-                                <span class="lang-mn">Сургуулийн нэр</span>
-                                <span class="lang-vi">Tên trường</span>
-                            </th>
-                            <th>
-                                <span class="lang-ja">学部</span>
-                                <span class="lang-en">Department</span>
-                                <span class="lang-mn">Тэнхим</span>
-                                <span class="lang-vi">Khoa</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for i in range(3) %}
-                        <tr>
-                            <td>{{ form.education_start(class="form-control") }}</td>
-                            <td>{{ form.education_end(class="form-control") }}</td>
-                            <td>{{ form.school_name(class="form-control") }}</td>
-                            <td>{{ form.department(class="form-control") }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Work Experience Section -->
-        <section class="form-section" id="work-experience">
-            <h2 class="section-title">
-                <span class="lang-ja">職歴</span>
-                <span class="lang-en">Work Experience</span>
-                <span class="lang-mn">Ажлын туршлага</span>
-                <span class="lang-vi">Kinh nghiệm làm việc</span>
-            </h2>
-            
-            <div class="form-group">
-                <table class="work-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <span class="lang-ja">入社年月</span>
-                                <span class="lang-en">Start Date</span>
-                                <span class="lang-mn">Ажилд орсон огноо</span>
-                                <span class="lang-vi">Ngày bắt đầu</span>
-                            </th>
-                            <th>
-                                <span class="lang-ja">退社年月</span>
-                                <span class="lang-en">End Date</span>
-                                <span class="lang-mn">Ажлаас гарсан огноо</span>
-                                <span class="lang-vi">Ngày kết thúc</span>
-                            </th>
-                            <th>
-                                <span class="lang-ja">会社名</span>
-                                <span class="lang-en">Company Name</span>
-                                <span class="lang-mn">Компанийн нэр</span>
-                                <span class="lang-vi">Tên công ty</span>
-                            </th>
-                            <th>
-                                <span class="lang-ja">仕事内容、退社理由</span>
-                                <span class="lang-en">Job Description, Reason for Leaving</span>
-                                <span class="lang-mn">Ажлын чиг үүрэг, Гарсан шалтгаан</span>
-                                <span class="lang-vi">Mô tả công việc, Lý do nghỉ việc</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for i in range(3) %}
-                        <tr>
-                            <td>{{ form.work_start(class="form-control") }}</td>
-                            <td>{{ form.work_end(class="form-control") }}</td>
-                            <td>{{ form.company_name(class="form-control") }}</td>
-                            <td>{{ form.job_description(class="form-control") }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Qualifications Section -->
-        <section class="form-section" id="qualifications">
-            <h2 class="section-title">
-                <span class="lang-ja">資格</span>
-                <span class="lang-en">Qualifications</span>
-                <span class="lang-mn">Мэргэжлийн үнэмлэх</span>
-                <span class="lang-vi">Bằng cấp</span>
-            </h2>
-            
-            <div class="form-group">
-                <div class="qualification-item">
-                    <label class="form-label">
-                        <span class="lang-ja">日本運転免許</span>
-                        <span class="lang-en">Japanese Driver's License</span>
-                        <span class="lang-mn">Япон жолооны үнэмлэх</span>
-                        <span class="lang-vi">Bằng lái xe Nhật Bản</span>
-                    </label>
-                    {{ form.japanese_license(class="form-check-inline") }}
-                </div>
-                
-                <div class="qualification-item">
-                    <label class="form-label">
-                        <span class="lang-ja">モンゴル運転免許</span>
-                        <span class="lang-en">Mongolian Driver's License</span>
-                        <span class="lang-mn">Монгол жолооны үнэмлэх</span>
-                        <span class="lang-vi">Bằng lái xe Mông Cổ</span>
-                    </label>
-                    {{ form.mongolian_license(class="form-check-inline") }}
-                </div>
-                
-                <div class="qualification-item">
-                    <label class="form-label">
-                        <span class="lang-ja">ベトナム運転免許</span>
-                        <span class="lang-en">Vietnamese Driver's License</span>
-                        <span class="lang-mn">Вьетнам жолооны үнэмлэх</span>
-                        <span class="lang-vi">Bằng lái xe Việt Nam</span>
-                    </label>
-                    {{ form.vietnamese_license(class="form-check-inline") }}
-                </div>
-            </div>
-        </section>
-
-        <!-- Health Information Section -->
-        <section class="form-section" id="health">
-            <h2 class="section-title">
-                <span class="lang-ja">健康状態</span>
-                <span class="lang-en">Health Information</span>
-                <span class="lang-mn">Эрүүл мэндийн байдал</span>
-                <span class="lang-vi">Tình trạng sức khỏe</span>
-            </h2>
-            
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label class="form-label">
-                        <span class="lang-ja">身長</span>
-                        <span class="lang-en">Height</span>
-                        <span class="lang-mn">Өндөр</span>
-                        <span class="lang-vi">Chiều cao</span>
-                    </label>
-                    {{ form.height(class="form-control", placeholder="cm") }}
-                </div>
-                
-                <div class="form-group col-md-3">
-                    <label class="form-label">
-                        <span class="lang-ja">体重</span>
-                        <span class="lang-en">Weight</span>
-                        <span class="lang-mn">Жин</span>
-                        <span class="lang-vi">Cân nặng</span>
-                    </label>
-                    {{ form.weight(class="form-control", placeholder="kg") }}
-                </div>
-                
-                <div class="form-group col-md-3">
-                    <label class="form-label">
-                        <span class="lang-ja">血液型</span>
-                        <span class="lang-en">Blood Type</span>
-                        <span class="lang-mn">Цусны бүлэг</span>
-                        <span class="lang-vi">Nhóm máu</span>
-                    </label>
-                    {{ form.blood_type(class="form-control") }}
-                </div>
-            </div>
-
-            <!-- Allergies Section -->
-            <div class="form-group">
-                <label class="form-label">
-                    <span class="lang-ja">アレルギー</span>
-                    <span class="lang-en">Allergies</span>
-                    <span class="lang-mn">Харшил</span>
-                    <span class="lang-vi">Dị ứng</span>
-                </label>
-                {{ form.allergies(class="form-check-inline") }}
-                {{ form.allergy_details(class="form-control", placeholder="詳細を記入してください") }}
-            </div>
-
-            <!-- Additional Health Questions -->
-            <div class="form-group">
-                <label class="form-label">
-                    <span class="lang-ja">タバコ吸いますか？</span>
-                    <span class="lang-en">Do you smoke?</span>
-                    <span class="lang-mn">Та тамхи татдаг уу?</span>
-                    <span class="lang-vi">Bạn có hút thuốc không?</span>
-                </label>
-                {{ form.smoking(class="form-check-inline") }}
+                {{ form.name_kanji.label }}
+                {{ form.name_kanji(class="form-control") }}
+                {% for error in form.name_kanji.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="form-group">
-                <label class="form-label">
-                    <span class="lang-ja">お酒飲みますか？</span>
-                    <span class="lang-en">Do you drink alcohol?</span>
-                    <span class="lang-mn">Та архи уудаг уу?</span>
-                    <span class="lang-vi">Bạn có uống rượu không?</span>
-                </label>
-                {{ form.drinking(class="form-check-inline") }}
+                {{ form.name_furigana.label }}
+                {{ form.name_furigana(class="form-control") }}
+                {% for error in form.name_furigana.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
             </div>
-        </section>
 
-        <button type="submit" class="submit-btn">
-            <span class="lang-ja">応募する</span>
-            <span class="lang-en">Submit</span>
-            <span class="lang-mn">Илгээх</span>
-            <span class="lang-vi">Gửi đi</span>
-        </button>
+            <!-- Add other fields similarly -->
+        </div>
+        
+        <button type="submit" class="submit-btn">送信 / Submit</button>
     </form>
 </div>
 {% endblock %}
